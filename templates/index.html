@@ -1,1 +1,211 @@
-<h1>Welcomes to the home page</h1>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Student Exam Performance Indicator</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Source+Sans+3:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink: #1B1F3B;
+    --paper: #F7F4EC;
+    --paper-line: #E4DFCF;
+    --chalk-yellow: #E8B923;
+    --teal: #4A7C82;
+    --slate: #5B6270;
+    --red-pen: #B4432D;
+  }
+
+  *{ box-sizing: border-box; margin: 0; padding: 0; }
+
+  body{
+    background: var(--paper);
+    color: var(--ink);
+    font-family: 'Source Sans 3', sans-serif;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+    position: relative;
+    overflow-x: hidden;
+  }
+
+  /* faint ruled-paper backdrop */
+  body::before{
+    content: "";
+    position: fixed;
+    inset: 0;
+    background-image: repeating-linear-gradient(
+      to bottom,
+      transparent 0,
+      transparent 39px,
+      var(--paper-line) 40px
+    );
+    opacity: 0.6;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .sheet{
+    position: relative;
+    z-index: 1;
+    max-width: 620px;
+    width: 100%;
+    background: #FFFEFB;
+    border: 1px solid var(--paper-line);
+    border-radius: 4px;
+    box-shadow: 0 1px 2px rgba(27,31,59,0.04), 0 12px 32px rgba(27,31,59,0.08);
+    padding: 56px 52px 48px;
+  }
+
+  .eyebrow{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 0.8rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--teal);
+    font-weight: 600;
+    margin-bottom: 18px;
+  }
+  .eyebrow::before{
+    content: "";
+    width: 22px;
+    height: 1px;
+    background: var(--teal);
+  }
+
+  h1{
+    font-family: 'Fraunces', serif;
+    font-weight: 600;
+    font-size: 2.5rem;
+    line-height: 1.12;
+    letter-spacing: -0.01em;
+    color: var(--ink);
+    margin-bottom: 16px;
+  }
+
+  .lede{
+    font-size: 1.05rem;
+    line-height: 1.65;
+    color: var(--slate);
+    max-width: 46ch;
+    margin-bottom: 34px;
+  }
+
+  .stamp-row{
+    display: flex;
+    gap: 28px;
+    margin-bottom: 40px;
+    flex-wrap: wrap;
+  }
+  .stamp{
+    flex: 1;
+    min-width: 140px;
+    border-left: 2px solid var(--chalk-yellow);
+    padding-left: 14px;
+  }
+  .stamp .num{
+    font-family: 'Fraunces', serif;
+    font-size: 1.6rem;
+    font-weight: 600;
+    color: var(--ink);
+    display: block;
+  }
+  .stamp .label{
+    font-size: 0.82rem;
+    color: var(--slate);
+  }
+
+  .cta{
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: var(--ink);
+    color: #FFFEFB;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1rem;
+    padding: 15px 28px;
+    border-radius: 2px;
+    transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
+    box-shadow: 3px 3px 0 var(--chalk-yellow);
+  }
+  .cta:hover{
+    transform: translate(-2px, -2px);
+    box-shadow: 5px 5px 0 var(--chalk-yellow);
+    background: #262b4f;
+  }
+  .cta:active{
+    transform: translate(0, 0);
+    box-shadow: 1px 1px 0 var(--chalk-yellow);
+  }
+  .cta:focus-visible{
+    outline: 2px solid var(--teal);
+    outline-offset: 3px;
+  }
+  .cta svg{ transition: transform 0.15s ease; }
+  .cta:hover svg{ transform: translateX(3px); }
+
+  footer.note{
+    margin-top: 34px;
+    font-size: 0.82rem;
+    color: var(--slate);
+    border-top: 1px dashed var(--paper-line);
+    padding-top: 18px;
+  }
+
+  @media (max-width: 480px){
+    .sheet{ padding: 40px 26px 34px; }
+    h1{ font-size: 2rem; }
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    .cta, .cta svg{ transition: none; }
+  }
+</style>
+</head>
+<body>
+
+  <main class="sheet">
+    <p class="eyebrow">Predictive analytics</p>
+    <h1>How will a student score on the math exam?</h1>
+    <p class="lede">
+      This tool estimates a student's math score from five background factors —
+      gender, ethnicity, parental education, lunch type, and test preparation —
+      plus their reading and writing scores, using a trained regression model.
+    </p>
+
+    <div class="stamp-row">
+      <div class="stamp">
+        <span class="num">7</span>
+        <span class="label">input factors</span>
+      </div>
+      <div class="stamp">
+        <span class="num">&lt;1s</span>
+        <span class="label">prediction time</span>
+      </div>
+      <div class="stamp">
+        <span class="num">/100</span>
+        <span class="label">score scale</span>
+      </div>
+    </div>
+
+    <a class="cta" href="/predictdata">
+      Start a prediction
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M3 8H13M13 8L9 4M13 8L9 12" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </a>
+
+    <footer class="note">
+      Predictions are estimates from a statistical model and are not a guarantee of actual exam performance.
+    </footer>
+  </main>
+
+</body>
+</html>
